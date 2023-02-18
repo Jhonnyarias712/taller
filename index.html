@@ -1,0 +1,66 @@
+<h1 style="color:green;"> Ciudad Mitad del Mundo </h1>
+<img src="1.images.arcpublishing.com/infobae/QTWJJLKURRHIDFR7UYQFFNHNRQ.jpeg"
+     alt="Imagen del Monumento" width="700" height="300" />
+
+<p> La mitad del Mundo está ubicado a 15 kilómetros de la ciudad de Quito, es considerada como un atractivo turístico de Ecuador. </p>
+<p> La Ciudad Mitad del Mundo es un complejo turístico y temático que fue construido en honor a la Misión Geodésica Francesa, y versa sobre la importancia de la Línea Ecuatorial que divide al planeta en hemisferio norte y el hemisferio sur.Mitad del Mundo contiene otras atracciones como un Planetario, y en la Plaza Central se realizan varias representaciones musicales y culturales. <p>
+<p> Una pequeña ciudad que rodea el monumento en torno al Museo Etnográfico actúa como centro turístico, ofreciendo una réplica de una ciudad colonial española llamada «Ciudad Mitad del Mundo».<p>
+
+
+<body>
+
+    <h1  style="color:blue;"> Calculadora de Distancia a la Mitad del Mundo </h1>
+
+    <p>Su ubicación actual: <span id="location"></span></p>
+
+    <p>Distancia a la mitad del mundo: <span id="distance"></span></p>
+
+
+    <script>
+
+      // Obtener la ubicación actual
+
+      navigator.geolocation.getCurrentPosition(function (position) {
+
+        var lat1 = position.coords.latitude;
+
+        var lon1 = position.coords.longitude;
+
+
+        // La ubicación de Quito es  ??
+
+        var lat2 = -0.0102496 ;
+
+        var lon2 = -78.4464668;
+
+
+        // Función para calcular la distancia en kilómetros
+
+        var R = 6371; // Radio de la Tierra (km)
+
+        var dLat = (lat2 - lat1) * (Math.PI / 180);
+
+        var dLon = (lon2 - lon1) * (Math.PI / 180);
+
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+
+                Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        var d = R * c;
+
+
+        // Mostrar la distancia en la página
+
+        document.getElementById("location").innerHTML = lat1 + ", " + lon1;
+
+        document.getElementById("distance").innerHTML = d + " km";
+
+      });
+
+    </script>
+
+  </body>
